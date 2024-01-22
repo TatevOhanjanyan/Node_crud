@@ -1,22 +1,14 @@
-// var click = document.getElementById("send");
-// click.addEventListener("click", handleEvent);
-// function handleEvent(){
-//     let name = document.getElementById("name")
-//     let age = document.getElementById("age")
 
-//     console.log(name.ariaValue, age.value);
-// }
+let usname = document.getElementById("usname").value
+let usage = document.getElementById("usage").value
+let usemail = document.getElementById("usemail").value
 
 function sendData() {
-  let nameInput = document.getElementById("name").value
-  let ageInput = document.getElementById("age").value
-
-  fetch("/addName", {
+  var response = fetch("https://localhost:3000/addName", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/Json"
     },
-    body: JSON.stringify({ name: nameInput, age: ageInput }),
-  });
-
+    body: JSON.stringify({ name: usname.value, password: uspassword.value, email: usemail.value })
+  })
 }
