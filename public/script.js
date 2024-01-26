@@ -1,14 +1,13 @@
+let usPassword = document.getElementById('usPassword');
+let usName = document.getElementById('usName');
+let usEmail = document.getElementById('usEmail');
 
-let usname = document.getElementById("usname").value
-let usage = document.getElementById("usage").value
-let usemail = document.getElementById("usemail").value
-
-function sendData() {
-  var response = fetch("https://localhost:3000/addName", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/Json"
-    },
-    body: JSON.stringify({ name: usname.value, password: uspassword.value, email: usemail.value })
-  })
+function getVal() {
+    var response =  fetch("http://localhost:3000/addName", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name: usName.value, password: usPassword.value, email:usEmail.value })
+    })
 }
