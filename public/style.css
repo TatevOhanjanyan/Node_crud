@@ -1,4 +1,13 @@
-body{
+body {
+    background-image: linear-gradient(to right, red , yellow);
+}
+.mytext {
+    width: 110px;
+    height: 80px;
     
-    background-color: antiquewhite;
+}
+
+.tr{
+    font-size: 28px;
+    margin-right: 7px;
 }
