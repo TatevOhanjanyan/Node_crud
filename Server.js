@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 app.get("/", function (req, res) {
-    console.log(123124);
     mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'Connection error:'));
@@ -34,6 +33,7 @@ app.get("/", function (req, res) {
 app.post('/addName', async (req, res) => {
     const name = req.body.name;
     const price = req.body.price;
+    const mod = req.body.model;
     const des = req.body.description;
     mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
     const db = mongoose.connection;
@@ -44,6 +44,7 @@ app.post('/addName', async (req, res) => {
             let result = await mongoose.connection.db.collection('products').insertOne({
                 name: name,
                 price: price,
+                model: model,
                 description: des,
             })
            res.redirect('/')
@@ -95,6 +96,7 @@ app.get("/update/:id", function (req, res) {
 app.post("/updateData", function (req, res) {
     const name = req.body.name;
     const price = req.body.price;
+    const model = req.body.model;
     const des = req.body.description;
     const id = req.body.id;
 
@@ -109,7 +111,7 @@ app.post("/updateData", function (req, res) {
         try {
             let result = await mongoose.connection.db.collection('products').updateOne(
                 { _id: new ObjectId(id) },
-                { $set: { name: name, price: price, description: des,  } }
+                { $set: { name: name, price: price, model:model, description: des,  } }
             );
 
 
